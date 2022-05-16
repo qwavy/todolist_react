@@ -1,0 +1,15 @@
+.important {
+    font-weight: bold;
+    color: slateblue;
+}
+.deleteItem{
+    display: none;
+}
+.done {
+    text-decoration: line-through;
+}
+.all{
+    /* display: block;   */
+    background-color: aqua;
+    color: aqua;
+}
