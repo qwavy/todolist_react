@@ -1,5 +1,3 @@
-.all{
-    /* display: block;   */
-    background-color: aqua;
-    color: aqua;
+.active{
+    color: red;
 }

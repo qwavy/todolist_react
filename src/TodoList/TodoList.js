@@ -28,27 +28,37 @@ import FilterButtons from '../FilterButtons/FilterButtons';
 // }
 
 
-const TodoList = (props) => {
+const TodoList = ({props}) => {
+    console.log(props)
+
     return (
-        
-        <>
-            <FilterButtons
-             All_btn={() => props.onAll}            
-            />
+
+        <div>
             <ul>
-                {props.list.map(task =>
-                    <TodoListItem key={task.id}
+                {props.map(task =>
+                    <TodoListItem
+                        // todos={task}
+                        array={task}
+                        key={task.id}
                         text={task.text}
                         done={task.done}
                         important={task.important}
                         deleteItem={task.deleteItem}
-                        onToggleDone={() => props.onDone(task.id)}
-                        onToggleImportant={() => props.onImportant(task.id)}
-                        onToggleDelete={() => props.onDelete(task.id)} />
+                        // onToggleDone={() => props.onDone(task.id)}
+                        // onToggleImportant={() => props.onImportant(task.id)}
+                        // onToggleDelete={() => props.onDelete(task.id)} 
+                        />
 
                 )}
             </ul>
-        </>
+
+
+            {/* {props.todos.map(id => <FilterButtons
+                array={id}
+                key={id.id}
+            />)} */}
+
+        </div>
     )
 }
 

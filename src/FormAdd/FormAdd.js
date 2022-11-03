@@ -1,43 +1,83 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 
+const FormAdd = ({todos,onAdd}) => {
+    const [value,setValue] = useState('')
 
-export default class FormAdd extends Component {
-
-    state = {
-        value: '',
+    const onChange = (e) => {
+        // this.setState({ value: e.target.value })
+        setValue(e.target.value)
     }
 
-    onChange = (e) => {
-        this.setState({ value: e.target.value })
+    const onClick = () => {
+        console.log(todos)
+        // console.log(onAdd)
+        // todos.onAdd(value)
+        onAdd(value)
+        // this.setState({ value: '' })
+        setValue('')
+
     }
 
-    onClick = () => {
-        this.props.onAdd(this.state.value)
-        this.setState({ value: '' })
-    }
-
-    upper = () => {
-        this.setState((state) => {
+    const upper = () => {
+        
+        setValue(() => {
             return {
-                value: state.value.toUpperCase()
+                value: value.toUpperCase()
             }
         })
     }
-
-    render() {
         return (
             <div>
                 <label>Add Task
-                    <input value={this.state.value}
-                        onChange={this.onChange}
-                        onBlur={this.upper}
+                    <input value={value}
+                        onChange={onChange}
+                        onBlur={upper}
                     />
                 </label>
-                <button onClick={this.onClick}>Add Task</button>
+                <button onClick={onClick}>Add Task</button>
             </div>
         )
-    }
+    
 }
+export default FormAdd
+
+// export default class FormAdd extends Component {
+
+//     state = {
+//         value: '',
+//     }
+
+//     onChange = (e) => {
+//         this.setState({ value: e.target.value })
+//     }
+
+//     onClick = () => {
+//         this.props.onAdd(this.state.value)
+//         this.setState({ value: '' })
+//     }
+
+//     upper = () => {
+//         this.setState((state) => {
+//             return {
+//                 value: state.value.toUpperCase()
+//             }
+//         })
+//     }
+
+//     render() {
+//         return (
+//             <div>
+//                 <label>Add Task
+//                     <input value={this.state.value}
+//                         onChange={this.onChange}
+//                         onBlur={this.upper}
+//                     />
+//                 </label>
+//                 <button onClick={this.onClick}>Add Task</button>
+//             </div>
+//         )
+//     }
+// }
 
 // const FormAdd = (props) => <div>
 //     <label>Add Task
